@@ -1,4 +1,6 @@
 import pandas as pd
+from blockchain import Blockchain
+import random
 
 def is_user(user):
     df = pd.read_excel('database.xlsx')  
@@ -47,6 +49,14 @@ def send_money(sender,reciever,amount):
             transfer_status = "Transfer Error: insufficient funds to complete transfer"
             print (transfer_status)
         else:
+            
+            blockchain = Blockchain()
+            transaction = blockchain.new_transaction(sender, reciever, amount)
+            proof_no = random.randint(0,999999999999999)
+            blockchain.new_block(proof_no)
+    
+            
+            
             new_sender_balance = sender_balance - amount
             new_reciever_balance = reciever_balance + amount
             

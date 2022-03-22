@@ -2,6 +2,8 @@ import PySimpleGUI as sg
 from face_rec import get_facename
 from account_procedures import check_balance, send_money, is_user
 
+sg.theme('TanBlue')
+
 def msg_box(msg):
     layout = [
         [sg.Text(msg, key="new")],
@@ -84,14 +86,14 @@ def balance_window(user_name,user_balance):
     
   
 main_layout = [
-    [sg.Text("hello from PySimpleGUI")],
-    [sg.Button("Login using face ID")],
-    [sg.Button("Exit")]
+    [sg.Image(filename=r'output-onlinepngtools.png',background_color='white')],
+    [sg.Button(button_text="Login using face ID",size=(20,2))],
+    [sg.Button(button_text="Exit",size=(20,2))]
     ]   
-  
+
   
 def main():
-    window = sg.Window("Main Window", layout = main_layout, size = (500,500))
+    window = sg.Window("Main Window", layout = main_layout,background_color= 'white',element_justification='c')
     while True:
         event, values = window.read()
         if event == "Exit" or event == sg.WIN_CLOSED:
