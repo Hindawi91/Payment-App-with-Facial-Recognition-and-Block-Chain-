@@ -23,7 +23,7 @@ def payment_window(user_name):
     layout = [
         [sg.Text("Enter receiver name:", key="new")],
         [sg.InputText()],
-        [sg.Text("Enter payment amount in Dollars $", key="new")],
+        [sg.Text("Enter payment amount in Crypto Currency", key="new")],
         [sg.InputText()],
         [sg.Button("Send Money"),sg.Button("Exit")],
         ]
@@ -60,7 +60,7 @@ def payment_window(user_name):
 def balance_window(user_name,user_balance):
     layout = [
         [sg.Text(f"Customer Name: {user_name}", key="customer")],
-        [sg.Text(f"Balance: ${user_balance}", key="balance")],
+        [sg.Text(f"Balance: {user_balance} Crypto Currency", key="balance")],
         [sg.Button("Make Payment"),sg.Button("Refresh"),sg.Button("Exit")]
         ]
     
@@ -79,7 +79,7 @@ def balance_window(user_name,user_balance):
         if event == "Refresh":
             
             user_balance = check_balance(user_name)
-            window['balance'].Update(f"Balance: ${user_balance}")
+            window['balance'].Update(f"Balance: {user_balance} Crypto Currency")
             
             
     window.close()

@@ -11,10 +11,13 @@ def get_facename():
     faces_names = []
     
     data_path = './data/'
+    face_encodings_folder = './faces_encodings/'
     face_encodings_path = './faces_encodings/faces_encodings.npy'
     
     if not os.path.exists(face_encodings_path):
-    
+        if not os.path.exists(face_encodings_folder):
+            os.makedirs(face_encodings_folder)
+            
         for file in os.listdir(data_path):
             
             name = file.replace(".jpg", "")
